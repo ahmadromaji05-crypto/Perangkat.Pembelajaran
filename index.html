@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Perangkat Pembelajaran KBC (Kurikulum Berbasis Cinta)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .active-tab {
+            background-color: #eef2ff;
+            color: #4338ca;
+            border-color: #c7d2fe;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-rose-700 via-indigo-700 to-indigo-800 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="p-2 bg-white/10 rounded-xl backdrop-blur-md">
+                    <i data-lucide="heart-handshake" class="w-6 h-6 text-rose-200"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-tight block leading-none">PerangkatAjaib AI</span>
+                    <span class="text-[10px] text-rose-200 font-medium tracking-wide uppercase">Edisi Kurikulum Berbasis Cinta (KBC)</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="hidden sm:inline-flex text-xs bg-rose-500/20 text-rose-100 px-3 py-1 rounded-full border border-rose-300/30 items-center gap-1.5">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-300"></i> Integrasi 10 Perangkat Utuh
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="lg:col-span-1 bg-white p-5 rounded-2xl shadow-sm border border-slate-200 h-fit sticky top-24">
+            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">10 Komponen Perangkat KBC</h2>
+            <nav class="space-y-1.5" id="stepperNav">
+                <button onclick="switchTab('tab-rpe')" id="btn-tab-rpe" class="tab-btn active-tab w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs transition border">
+                    <i data-lucide="calculator" class="w-4 h-4"></i>
+                    <span>1. Rincian Pekan Efektif (RPE)</span>
+                </button>
+                <button onclick="switchTab('tab-cp')" id="btn-tab-cp" class="tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition border border-transparent">
+                    <i data-lucide="heart" class="w-4 h-4"></i>
+                    <span>2. Capaian KBC (CP-KBC)</span>
+                </button>
+                <button onclick="switchTab('tab-tp')" id="btn-tab-tp" class="tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition border border-transparent">
+                    <i data-lucide="target" class="w-4 h-4"></i>
+                    <span>3. Tujuan Pembelajaran (TP)</span>
+                </button>
+                <button onclick="switchTab('tab-atp')" id="btn-tab-atp" class="tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition border border-transparent">
+                    <i data-lucide="git-commit" class="w-4 h-4"></i>
+                    <span>4. Alur Tujuan Pembelajaran (ATP)</span>
+                </button>
+                <button onclick="switchTab('tab-prota')" id="btn-tab-prota" class="tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition border border-transparent">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>5. Program Tahunan (Prota)</span>
+                </button>
+                <button onclick="switchTab('tab-promes')" id="btn-tab-promes" class="tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition border border-transparent">
+                    <i data-lucide="calendar-range" class="w-4 h-4"></i>
+                    <span>6. Program Semester (Promes)</span>
+                </button>
+                <button onclick="switchTab('tab-modul')" id="btn-tab-modul" class="tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition border border-transparent">
+                    <i data-lucide="book-open" class="w-4 h-4"></i>
+                    <span>7. Modul Ajar KBC</span>
+                </button>
+                <button onclick="switchTab('tab-bahan')" id="btn-tab-bahan" class="tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition border border-transparent">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span>8. Bahan Ajar & Bacaan</span>
+                </button>
+                <button onclick="switchTab('tab-lkpd')" id="btn-tab-lkpd" class="tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition border border-transparent">
+                    <i data-lucide="clipboard-list" class="w-4 h-4"></i>
+                    <span>9. LKPD (Lembar Kerja)</span>
+                </button>
+                <button onclick="switchTab('tab-evaluasi')" id="btn-tab-evaluasi" class="tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition border border-transparent">
+                    <i data-lucide="award" class="w-4 h-4"></i>
+                    <span>10. Evaluasi & Rubrik Cinta</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="lg:col-span-3 space-y-6">
+
+            <!-- Data Umum & Pilar KBC -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <div>
+                        <h2 class="font-bold text-slate-900 text-lg">Pengaturan Identitas & Pilar KBC</h2>
+                        <p class="text-xs text-slate-500 mt-0.5">Lengkapi informasi dasar untuk mengintegrasikan nilai-nilai Kurikulum Berbasis Cinta.</p>
+                    </div>
+                    <span class="text-xs bg-rose-50 text-rose-700 px-3 py-1 rounded-full font-semibold border border-rose-200">KBC Enabled</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1.5">Nama Satuan Pendidikan</label>
+                        <input type="text" value="Pesantren Terpadu Al-Fauzan" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-rose-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1.5">Mata Pelajaran</label>
+                        <select class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-rose-500 outline-none">
+                            <option>Pendidikan Pancasila & Kewarganegaraan (PPKn)</option>
+                            <option>Pendidikan Agama Islam (PAI)</option>
+                            <option>Bahasa Indonesia</option>
+                            <option>Matematika Kasih Sayang</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1.5">Fase / Kelas</label>
+                        <select class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-rose-500 outline-none">
+                            <option>Fase D (Kelas VII, VIII, IX)</option>
+                            <option>Fase E (Kelas X)</option>
+                            <option>Fase F (Kelas XI, XII)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Pilar Karakter KBC -->
+                <div>
+                    <label class="block font-medium text-xs text-slate-700 mb-2">Integrasi 4 Pilar Kurikulum Berbasis Cinta (KBC)</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <label class="flex items-center space-x-2 p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-rose-50/50 cursor-pointer text-xs">
+                            <input type="checkbox" checked class="rounded text-rose-600 focus:ring-rose-500">
+                            <span class="font-medium text-slate-700">Cinta Allah & Rasul</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-rose-50/50 cursor-pointer text-xs">
+                            <input type="checkbox" checked class="rounded text-rose-600 focus:ring-rose-500">
+                            <span class="font-medium text-slate-700">Cinta Diri & Orang Tua</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-rose-50/50 cursor-pointer text-xs">
+                            <input type="checkbox" checked class="rounded text-rose-600 focus:ring-rose-500">
+                            <span class="font-medium text-slate-700">Cinta Sesama & Bangsa</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-rose-50/50 cursor-pointer text-xs">
+                            <input type="checkbox" checked class="rounded text-rose-600 focus:ring-rose-500">
+                            <span class="font-medium text-slate-700">Cinta Ilmu & Lingkungan</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 1: RPE -->
+            <section id="tab-rpe" class="tab-content bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+                        <i data-lucide="calculator" class="w-5 h-5 text-indigo-600"></i> Komponen 1: Rincian Pekan Efektif (RPE)
+                    </h3>
+                    <span class="text-xs text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full font-medium">Otomatis Terhitung</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <label class="block text-xs text-slate-500 mb-1">Total Pekan Semester 1</label>
+                        <input type="number" id="totalPekan1" value="20" oninput="hitungRPE()" class="w-full text-lg font-bold bg-transparent border-b border-slate-300 focus:outline-none">
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <label class="block text-xs text-slate-500 mb-1">Pekan Tidak Efektif</label>
+                        <input type="number" id="pekanLibur1" value="3" oninput="hitungRPE()" class="w-full text-lg font-bold bg-transparent border-b border-slate-300 focus:outline-none">
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <label class="block text-xs text-slate-500 mb-1">Jam Pelajaran (JP) / Pekan</label>
+                        <input type="number" id="jpPekan1" value="3" oninput="hitungRPE()" class="w-full text-lg font-bold bg-transparent border-b border-slate-300 focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="p-4 bg-gradient-to-r from-indigo-900 to-indigo-800 text-white rounded-xl flex justify-between items-center text-sm">
+                    <div>
+                        <span class="text-indigo-200 text-xs block">Hasil Hitung Pekan Efektif KBC</span>
+                        <span class="font-bold text-base"><span id="resPekan">17</span> Pekan Efektif</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-indigo-200 text-xs block">Total Alokasi Waktu</span>
+                        <span class="font-bold text-base text-amber-300"><span id="resJP">51</span> JP Efektif</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab 2: CP KBC -->
+            <section id="tab-cp" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-3">
+                    <i data-lucide="heart" class="w-5 h-5 text-rose-600"></i> Komponen 2: Capaian Pembelajaran KBC (CP-KBC)
+                </h3>
+                <div class="p-4 bg-rose-50/60 border border-rose-100 rounded-xl space-y-2">
+                    <span class="text-xs font-bold text-rose-700 uppercase tracking-wide">Elemen Pancasila & Keharmonisan Sosial</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Peserta didik mampu menganalisis perumusan Pancasila dengan landasan rasa <strong class="text-rose-700">cinta tanah air dan kasih sayang sesama</strong>; menginternalisasi nilai-nilai Pancasila dalam kehidupan bermasyarakat yang penuh kehangatan, toleransi, serta saling menghargai perbedaan.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Tab 3: TP -->
+            <section id="tab-tp" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-3">
+                    <i data-lucide="target" class="w-5 h-5 text-indigo-600"></i> Komponen 3: Tujuan Pembelajaran (TP) Berbasis Cinta
+                </h3>
+                <div class="space-y-3 text-xs">
+                    <div class="p-3.5 border rounded-xl flex items-start justify-between bg-slate-50">
+                        <div>
+                            <span class="font-bold text-indigo-700 block mb-1">TP 1.1 - Spirit & Historis Pancasila</span>
+                            <p class="text-slate-600">Menganalisis sejarah lahirnya Pancasila dengan meneladani rasa cinta para pendiri bangsa terhadap persatuan Indonesia.</p>
+                        </div>
+                        <span class="bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-md font-semibold text-[11px]">6 JP</span>
+                    </div>
+                    <div class="p-3.5 border rounded-xl flex items-start justify-between bg-slate-50">
+                        <div>
+                            <span class="font-bold text-indigo-700 block mb-1">TP 1.2 - Penerapan Nilai Kasih Sayang</span>
+                            <p class="text-slate-600">Menerapkan sikap gotong royong dan kepedulian sosial sebagai wujud pengamalan Sila ke-2 dan ke-3 dalam kehidupan sekolah.</p>
+                        </div>
+                        <span class="bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-md font-semibold text-[11px]">6 JP</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab 4: ATP -->
+            <section id="tab-atp" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-3">
+                    <i data-lucide="git-commit" class="w-5 h-5 text-indigo-600"></i> Komponen 4: Alur Tujuan Pembelajaran (ATP)
+                </h3>
+                <ol class="relative border-l border-indigo-200 ml-3 space-y-4 text-xs">
+                    <li class="mb-4 ml-6">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full -left-3 ring-4 ring-white text-indigo-700 font-bold text-[10px]">1</span>
+                        <h4 class="font-bold text-slate-800">Tahap Faktual & Afeksi Cinta (Pekan 1-2)</h4>
+                        <p class="text-slate-500 mt-0.5">Mengenal tokoh perumus Pancasila melalui kisah keteladanan dan kasih sayang.</p>
+                    </li>
+                    <li class="ml-6">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full -left-3 ring-4 ring-white text-indigo-700 font-bold text-[10px]">2</span>
+                        <h4 class="font-bold text-slate-800">Tahap Konseptual & Aksi Nyata (Pekan 3-4)</h4>
+                        <p class="text-slate-500 mt-0.5">Praktik proyek kebaikan: Melakukan aksi kepedulian lingkungan dan teman sebaya.</p>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- Tab 5: Prota -->
+            <section id="tab-prota" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-3">
+                    <i data-lucide="calendar" class="w-5 h-5 text-indigo-600"></i> Komponen 5: Program Tahunan (Prota KBC)
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 border-b">
+                                <th class="p-2.5 border">Semester</th>
+                                <th class="p-2.5 border">Materi / TP</th>
+                                <th class="p-2.5 border">Pilar KBC</th>
+                                <th class="p-2.5 border text-center">Alokasi Waktu</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y text-slate-600">
+                            <tr>
+                                <td class="p-2.5 border font-semibold text-center">1</td>
+                                <td class="p-2.5 border">Sejarah Perumusan Pancasila</td>
+                                <td class="p-2.5 border text-rose-700 font-medium">Cinta Bangsa & Kasih Sayang</td>
+                                <td class="p-2.5 border text-center font-bold">12 JP</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 border font-semibold text-center">1</td>
+                                <td class="p-2.5 border">Norma dan Keadilan Sosial</td>
+                                <td class="p-2.5 border text-rose-700 font-medium">Cinta Sesama</td>
+                                <td class="p-2.5 border text-center font-bold">15 JP</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Tab 6: Promes -->
+            <section id="tab-promes" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-3">
+                    <i data-lucide="calendar-range" class="w-5 h-5 text-indigo-600"></i> Komponen 6: Program Semester (Promes)
+                </h3>
+                <p class="text-xs text-slate-500">Matriks distribusi jam pelajaran per bulan (Juli - Desember) terintegrasi dengan penanaman karakter KBC.</p>
+                <div class="p-4 bg-slate-50 border rounded-xl text-center text-xs text-slate-400">
+                    [Matriks Distribusi Minggu Efektif Promes Berhasil Diformat]
+                </div>
+            </section>
+
+            <!-- Tab 7: Modul Ajar -->
+            <section id="tab-modul" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-3">
+                    <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i> Komponen 7: Modul Ajar Kurikulum Berbasis Cinta
+                </h3>
+                <div class="space-y-3 text-xs">
+                    <div class="p-3 bg-indigo-50/50 rounded-xl border border-indigo-100">
+                        <span class="font-bold text-indigo-900 block mb-1">A. Kegiatan Pendahuluan (15 Menit) - "Sapaan Kasih"</span>
+                        <p class="text-slate-600">Guru menyapa dengan senyuman, doa bersama, dan melakukan *Check-in Emosi* (bertanya kabar kebahagiaan siswa hari ini).</p>
+                    </div>
+                    <div class="p-3 bg-rose-50/50 rounded-xl border border-rose-100">
+                        <span class="font-bold text-rose-900 block mb-1">B. Kegiatan Inti (60 Menit) - "Eksplorasi Bermakna"</span>
+                        <p class="text-slate-600">Siswa berdiskusi kelompok dengan prinsip saling mendengarkan tanpa memotong, dilanjutkan dengan analisis video keteladanan.</p>
+                    </div>
+                    <div class="p-3 bg-emerald-50/50 rounded-xl border border-emerald-100">
+                        <span class="font-bold text-emerald-900 block mb-1">C. Penutup (15 Menit) - "Afirmasi Cinta"</span>
+                        <p class="text-slate-600">Refleksi bersama dan saling memberikan apresiasi positif antarteman sebelum mengakhiri kelas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab 8: Bahan Ajar -->
+            <section id="tab-bahan" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-3">
+                    <i data-lucide="file-text" class="w-5 h-5 text-indigo-600"></i> Komponen 8: Bahan Ajar & Ringkasan Materi
+                </h3>
+                <div class="p-4 bg-slate-50 rounded-xl border text-xs text-slate-700 leading-relaxed">
+                    <h4 class="font-bold text-slate-900 mb-1">Materi Ringkas: "Pancasila sebagai Rumah Kasih Sayang"</h4>
+                    <p>Pancasila bukan sekadar susunan teks hukum, melainkan kristalisasi rasa cinta bangsa Indonesia terhadap Tuhan, sesama manusia, keberagaman, dan keadilan sosial...</p>
+                </div>
+            </section>
+
+            <!-- Tab 9: LKPD -->
+            <section id="tab-lkpd" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-3">
+                    <i data-lucide="clipboard-list" class="w-5 h-5 text-indigo-600"></i> Komponen 9: LKPD (Lembar Kerja Peserta Didik)
+                </h3>
+                <div class="p-4 border-2 border-dashed border-rose-200 rounded-xl bg-rose-50/30 text-xs space-y-2">
+                    <span class="font-bold text-rose-800">Tugas Aksi Cinta: "Jurnal Kebaikan Mingguan"</span>
+                    <p class="text-slate-600">Catatlah 3 bentuk tindakan kasih sayang yang kamu lakukan di lingkungan sekolah dan rumah pada minggu ini!</p>
+                </div>
+            </section>
+
+            <!-- Tab 10: Evaluasi -->
+            <section id="tab-evaluasi" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 border-b pb-3">
+                    <i data-lucide="award" class="w-5 h-5 text-indigo-600"></i> Komponen 10: Evaluasi & Rubrik Karakter Cinta
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div class="p-3 border rounded-xl bg-slate-50">
+                        <span class="font-bold text-slate-800 block mb-1">Asesmen Sikap (Afektif)</span>
+                        <p class="text-slate-500">Observasi empati, kesantunan, dan kepedulian sosial saat pembelajaran.</p>
+                    </div>
+                    <div class="p-3 border rounded-xl bg-slate-50">
+                        <span class="font-bold text-slate-800 block mb-1">Asesmen Pengetahuan</span>
+                        <p class="text-slate-500">Soal reflektif dan pemahaman konsep kebangsaan.</p>
+                    </div>
+                    <div class="p-3 border rounded-xl bg-slate-50">
+                        <span class="font-bold text-slate-800 block mb-1">Asesmen Kinerja (Proyek)</span>
+                        <p class="text-slate-500">Penilaian karya/Aksi Nyata Cinta Lingkungan.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Footer -->
+            <div class="bg-indigo-900 text-white p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                    <h4 class="font-bold text-base">Siap Mengunduh Paket KBC?</h4>
+                    <p class="text-xs text-indigo-200">Seluruh 10 komponen di atas akan dikemas otomatis dalam satu file Word (.docx).</p>
+                </div>
+                <button class="w-full sm:w-auto bg-rose-500 hover:bg-rose-600 text-white px-6 py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition shadow-lg">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Unduh Perangkat (.DOCX)</span>
+                </button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Script Interaktivitas -->
+    <script>
+        lucide.createIcons();
+
+        function switchTab(tabId) {
+            // Sembunyikan semua tab
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Tampilkan tab yang dipilih
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Reset gaya tombol navigasi
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active-tab');
+                btn.classList.add('text-slate-600', 'border-transparent');
+            });
+
+            // Beri gaya aktif pada tombol yang dipilih
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('active-tab');
+            activeBtn.classList.remove('text-slate-600', 'border-transparent');
+        }
+
+        function hitungRPE() {
+            const total = parseInt(document.getElementById('totalPekan1').value) || 0;
+            const libur = parseInt(document.getElementById('pekanLibur1').value) || 0;
+            const jp = parseInt(document.getElementById('jpPekan1').value) || 0;
+
+            const efektif = Math.max(0, total - libur);
+            const totalJP = efektif * jp;
+
+            document.getElementById('resPekan').innerText = efektif;
+            document.getElementById('resJP').innerText = totalJP;
+        }
+    </script>
+</body>
+</html>
